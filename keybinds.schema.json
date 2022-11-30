@@ -1,0 +1,111 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema",
+    "title": "Hotkeys",
+    "type": "object",
+    "properties": {
+        "modName": {
+            "type": "string"
+        },
+        "keybinds": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$mcm/Hotkey"
+            }
+        }
+    },
+    "required": [
+        "keybinds",
+        "modName"
+    ],
+    "$mcm": {
+        "Hotkey": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "desc": {
+                    "type": "string"
+                },
+                "help": {
+                    "type": "string"
+                },
+                "action": {
+                    "$ref": "#/$mcm/Action"
+                }
+            },
+            "required": [
+                "action",
+                "desc",
+                "id"
+            ],
+            "title": "Keybind"
+        },
+        "Action": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "CallFunction",
+                        "CallGlobalFunction",
+                        "RunConsoleCommand",
+                        "SendEvent"
+                    ]
+                },
+                "form": {
+                    "type": "string",
+                    "pattern": ".*\\|[0-9a-fA-F]+"
+                },
+                "function": {
+                    "type": "string"
+                },
+                "params": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "script": {
+                    "type": "string"
+                },
+                "command": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "type"
+            ],
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "type": {
+                                "enum": [
+                                    "CallFunction",
+                                    "SendEvent"
+                                ]
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "form"
+                        ]
+                    },
+                    "else": {
+                        "$comment": "Form is not valid on this type.",
+                        "not": {
+                            "required": [
+                                "form"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "title": "Action"
+        }
+    }
+}
