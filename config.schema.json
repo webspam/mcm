@@ -1,0 +1,416 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$ref": "#/$mcm/Config",
+    "$mcm": {
+        "Config": {
+            "type": "object",
+            "properties": {
+                "modName": {
+                    "type": "string",
+                    "description": "Your plugin name, without the extension."
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The name to be displayed in the MCM menu."
+                },
+                "minMcmVersion": {
+                    "type": "number",
+                    "description": "(Optional) The minimum required MCM versioncode."
+                },
+                "pluginRequirements": {
+                    "type": "array",
+                    "description": "(Optional) A list of required plugins.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "content": {
+                    "type": "array",
+                    "description": "The contents of the mod configuration menu.",
+                    "items": {
+                        "$ref": "#/$mcm/ConfigContent"
+                    }
+                },
+                "pages": {
+                    "type": "array",
+                    "description": "(Optional) Subpages of the config menu.",
+                    "items": {
+                        "$ref": "#/$mcm/Page"
+                    }
+                },
+                "author": {
+                    "type": "string",
+                    "description": ""
+                }
+            },
+            "required": [
+                "displayName",
+                "modName",
+                "content"
+            ],
+            "title": "Config"
+        },
+        "ConfigContent": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "text": {
+                    "type": "string"
+                },
+                "html": {
+                    "type": "boolean"
+                },
+                "type": {
+                    "$ref": "#/$mcm/ContentType"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "help": {
+                    "type": "string"
+                },
+                "valueOptions": {
+                    "$ref": "#/$mcm/ValueOptions"
+                },
+                "numLines": {
+                    "type": "integer"
+                },
+                "height": {
+                    "type": "integer"
+                },
+                "groupControl": {
+                    "type": "integer"
+                },
+                "groupCondition": {
+                    "$ref": "#/$mcm/GroupCondition"
+                },
+                "libName": {
+                    "type": "string"
+                },
+                "className": {
+                    "type": "string"
+                },
+                "modName": {
+                    "type": "string"
+                },
+                "groupControlX": {
+                    "type": "integer"
+                },
+                "groupConditionX": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "type"
+            ],
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "type": {
+                                "enum": [
+                                    "section",
+                                    "text",
+                                    "switcher",
+                                    "button",
+                                    "slider",
+                                    "stepper",
+                                    "dropdown",
+                                    "hotkey"
+                                ]
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "text"
+                        ]
+                    }
+                }
+            ],
+            "title": "ConfigContent"
+        },
+        "ValueOptions": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "sourceType": {
+                    "$ref": "#/$mcm/SourceType"
+                },
+                "path": {
+                    "type": "string"
+                },
+                "mask": {
+                    "type": "string"
+                },
+                "options": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "min": {
+                    "type": "number"
+                },
+                "max": {
+                    "type": "number"
+                },
+                "step": {
+                    "type": "number"
+                },
+                "sourceForm": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "sourceType"
+            ],
+            "title": "ValueOptions"
+        },
+        "Page": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "pageDisplayName": {
+                    "type": "string",
+                    "description": "The display name of the page."
+                },
+                "content": {
+                    "type": "array",
+                    "description": "The contents of the page.",
+                    "items": {
+                        "$ref": "#/$mcm/PageContent"
+                    }
+                }
+            },
+            "required": [
+                "content",
+                "pageDisplayName"
+            ],
+            "title": "Page"
+        },
+        "PageContent": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "text": {
+                    "type": "string"
+                },
+                "type": {
+                    "$ref": "#/$mcm/ContentType"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "help": {
+                    "type": "string"
+                },
+                "html": {
+                    "$ref": "#/$mcm/HTML"
+                },
+                "valueOptions": {
+                    "$ref": "#/$mcm/ValueOptions"
+                },
+                "groupControl": {
+                    "type": "integer"
+                },
+                "action": {
+                    "$ref": "#/$mcm/Action"
+                },
+                "groupCondition": {
+                    "$ref": "#/$mcm/GroupCondition"
+                },
+                "$help": {
+                    "type": "string"
+                },
+                "libName": {
+                    "type": "string"
+                },
+                "className": {
+                    "type": "string"
+                },
+                "modName": {
+                    "type": "string"
+                },
+                "$textChunk$Key": {
+                    "type": "string"
+                },
+                "$textChunk$descCompatVaultGirl": {
+                    "type": "string"
+                },
+                "_id": {
+                    "type": "string"
+                },
+                "$textChunk$RenamingRuleDesc1": {
+                    "type": "string"
+                },
+                "$textChunk$RenamingRuleDesc2": {
+                    "type": "string"
+                },
+                "$textChunk$RenamingRuleDesc3": {
+                    "type": "string"
+                },
+                "$textChunk$RenamingRuleDesc4": {
+                    "type": "string"
+                },
+                "$text": {
+                    "type": "string"
+                },
+                "$textChunk$introDialogsText2": {
+                    "type": "string"
+                },
+                "$textChunk$introDialogsText3": {
+                    "type": "string"
+                },
+                "$textChunk$introDialogsText4": {
+                    "type": "string"
+                },
+                "$textChunk$introDialogsText5": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "type"
+            ],
+            "title": "PageContent"
+        },
+        "Action": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "$ref": "#/$mcm/ActionType"
+                },
+                "form": {
+                    "type": "string"
+                },
+                "function": {
+                    "type": "string"
+                },
+                "script": {
+                    "type": "string"
+                },
+                "params": {
+                    "type": "array",
+                    "description": "Use the {value} keyword to substitute the value of a control in a Papyrus function call. Note that the data type of the parameter will match the value type of the control.\n\nWhen passing a constant value to a function, the desired data type can be specified by prefixing {i}/{b}/{f}/{s} to the value. This casts the value to an int, bool, float or string, respectively.\n\ne.g. \"{i}42\"",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "scriptName": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "form",
+                "function",
+                "type"
+            ],
+            "title": "Action"
+        },
+        "HTML": {
+            "anyOf": [
+                {
+                    "type": "boolean"
+                }
+            ],
+            "title": "HTML"
+        },
+        "GroupConditionClass": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "OR": {
+                    "$ref": "#/$base/IntOrIntArray"
+                },
+                "AND": {
+                    "$ref": "#/$base/IntOrIntArray"
+                },
+                "ONLY": {
+                    "$ref": "#/$base/IntOrIntArray"
+                }
+            },
+            "required": [],
+            "title": "GroupConditionClass"
+        },
+        "ContentType": {
+            "type": "string",
+            "enum": [
+                "section",
+                "hotkey",
+                "text",
+                "switcher",
+                "slider",
+                "button",
+                "spacer",
+                "stepper",
+                "dropdown",
+                "image",
+                "dropdownFiles",
+                "textinput",
+                "textinputFloat"
+            ],
+            "title": "ContentType"
+        },
+        "SourceType": {
+            "type": "string",
+            "enum": [
+                "PropertyValueBool",
+                "PropertyValueInt",
+                "PropertyValueFloat",
+                "ModSettingBool",
+                "ModSettingFloat",
+                "ModSettingString",
+                "ModSettingInt",
+                "GlobalValue"
+            ],
+            "title": "SourceType"
+        },
+        "GroupCondition": {
+            "oneOf": [
+                {
+                    "$ref": "#/$base/IntOrIntArray"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "OR": {
+                            "$ref": "#/$base/IntOrIntArray"
+                        },
+                        "AND": {
+                            "$ref": "#/$base/IntOrIntArray"
+                        },
+                        "ONLY": {
+                            "$ref": "#/$base/IntOrIntArray"
+                        }
+                    }
+                }
+            ],
+            "title": "GroupCondition",
+            "description": "Allows int, array of int, or AND/OR/ONLY objects (also int/array)"
+        },
+        "ActionType": {
+            "type": "string",
+            "enum": [
+                "CallFunction"
+            ],
+            "title": "ActionType"
+        }
+    },
+    "$base": {
+        "IntOrIntArray": {
+            "oneOf": [
+                {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                {
+                    "type": "integer"
+                }
+            ],
+            "title": "IntOrIntArray"
+        }
+    }
+}
