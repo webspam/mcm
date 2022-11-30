@@ -92,12 +92,6 @@
                 },
                 "modName": {
                     "type": "string"
-                },
-                "groupControlX": {
-                    "type": "integer"
-                },
-                "groupConditionX": {
-                    "type": "integer"
                 }
             },
             "required": [
