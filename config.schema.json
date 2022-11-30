@@ -173,7 +173,8 @@
                     "type": "array",
                     "description": "The contents of the page.",
                     "items": {
-                        "$ref": "#/$mcm/PageContent"
+                        "$ref": "#/$mcm/ConfigContent"
+                        // "$ref": "#/$mcm/PageContent"
                     }
                 }
             },
@@ -214,9 +215,6 @@
                 "groupCondition": {
                     "$ref": "#/$mcm/GroupCondition"
                 },
-                "$help": {
-                    "type": "string"
-                },
                 "libName": {
                     "type": "string"
                 },
@@ -224,42 +222,6 @@
                     "type": "string"
                 },
                 "modName": {
-                    "type": "string"
-                },
-                "$textChunk$Key": {
-                    "type": "string"
-                },
-                "$textChunk$descCompatVaultGirl": {
-                    "type": "string"
-                },
-                "_id": {
-                    "type": "string"
-                },
-                "$textChunk$RenamingRuleDesc1": {
-                    "type": "string"
-                },
-                "$textChunk$RenamingRuleDesc2": {
-                    "type": "string"
-                },
-                "$textChunk$RenamingRuleDesc3": {
-                    "type": "string"
-                },
-                "$textChunk$RenamingRuleDesc4": {
-                    "type": "string"
-                },
-                "$text": {
-                    "type": "string"
-                },
-                "$textChunk$introDialogsText2": {
-                    "type": "string"
-                },
-                "$textChunk$introDialogsText3": {
-                    "type": "string"
-                },
-                "$textChunk$introDialogsText4": {
-                    "type": "string"
-                },
-                "$textChunk$introDialogsText5": {
                     "type": "string"
                 }
             },
